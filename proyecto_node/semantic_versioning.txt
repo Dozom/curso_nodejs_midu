@@ -1,0 +1,4 @@
+// 1.0.0 -> SEMANTIC VERSIONING
+X la Major
+Y la Minor
+Z la Patch
