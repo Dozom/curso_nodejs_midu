@@ -38,9 +38,19 @@ const processRquest = (req, res) => {
             }
         case 'POST':
             switch (url) {
-                case '/pokemon/ditto':
-                    res.setHeader('Content-Type', 'application/json; carset=utf-8')
-                    return res.end(JSON.stringify(dittoJson))
+                case '/pokemon': {
+                    let body = ''
+                    // escuchar el evento data
+                    req.on('data', chunk => {
+                        body += chunk.toString()
+                    })
+                    req.on('end', () => {
+                        const data = JSON.parse(body)
+                        res.writeHead(201)
+                        res.end(JSON.stringify(data))
+                    })
+                    break
+                }
                 default:
                     res.statusCode = 404
                     res.setHeader('Content-Type', 'text/html; charset=utf-8')
