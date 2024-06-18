@@ -1,8 +1,7 @@
 // js -> por defecto utiliza CommonJs
 // .mjs -> Para utilizar ES Modules
 // .ejs -> Para utilizar CommonJS
-
-import { sum, sub, mult } from './sum.mjs'
+const { sum, sub, mult } = require('./sum.cjs')
 console.log('Suma')
 console.log(sum(1,2))
 console.log('Resta')
