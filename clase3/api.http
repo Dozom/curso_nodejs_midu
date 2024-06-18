@@ -1,0 +1,35 @@
+### Recuperar todas las películas
+
+GET http://localhost:1234/movies
+
+### Recuperar una pelicula por id
+
+GET http://localhost:1234/movies/1
+
+### Recuperar todas las peliculas por un género (filtro, usar query params)
+
+GET http://localhost:1234/movies?genre=Comedy
+
+### Crear una película con POST
+POST http://localhost:1234/movies
+Content-Type: application/json
+
+{
+    "title": "The Cotton Clubss",
+    "year": 1984,
+    "runtime": "abc",
+    "genres": ["Comedy"],
+    "director": "Francis Ford Coppola",
+    "actors": "Richard Gere, Gregory Hines, Diane Lane, Lonette McKee",
+    "plot": "The Cotton Club was a famous night club in Harlem. The story follows the people that visited the club, those that ran it, and is peppered with the Jazz music that made it so famous.",
+    "posterUrl": "asa"
+}
+
+### Crear una película con POST
+PATCH http://localhost:1234/movies/1
+Content-Type: application/json
+
+{
+    "title": "The Cotton Clubss",
+    "year": "1988"
+}
