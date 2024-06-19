@@ -6,8 +6,8 @@ const authRoutes = express.Router()
 
 authRoutes.post('/signup', async (req, res) => {
 	try {
-		const { username, password } = req.body;
-		const user = new User({ username, password });
+		const { username, password, role } = req.body;
+		const user = new User({ username, password, role });
 		await user.save();
 		res.status(200).json({ message: "New user registered successfully" })
 	} catch (error) {
@@ -17,7 +17,7 @@ authRoutes.post('/signup', async (req, res) => {
 })
 
 authRoutes.post('/login', async (req, res) => {
-	const { username, password } = req.body;
+	const { username, password, role } = req.body;
 	try {
 		const user = await User.findOne({ username })
 		if (!user) {
@@ -26,9 +26,12 @@ authRoutes.post('/login', async (req, res) => {
 		if (user.password !== password) {
 			return res.status(401).json({ message: "Invalid username or password" });
 		}
+		if (user.role !== role) {
+			return res.status(401).json({ message: "Invalid role" });
+		}
 		// Generate JWT token
 		const token = jwt.sign(
-			{ id: user._id, username: user.username },
+			{ id: user._id, username: user.username, role: user.role },
 			process.env.JWT_SECRET
 		)
 		res.json({ token });

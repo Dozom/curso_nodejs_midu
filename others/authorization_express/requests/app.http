@@ -22,3 +22,32 @@ Content-Type: application/json
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NzJmZjIyOTc2YWI1ZGUyZmI4OGVlZSIsInVzZXJuYW1lIjoidGVzdGxhdXJhIiwiaWF0IjoxNzE4ODEyNDg2fQ.fTt_yEZwZT2qPioUogGbKkvPKtsdsODi4Gb3hk4aNJc
 
 {}
+
+### TESTING signup with admin role
+POST http://localhost:3001/auth/signup
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NzJmZjIyOTc2YWI1ZGUyZmI4OGVlZSIsInVzZXJuYW1lIjoidGVzdGxhdXJhIiwiaWF0IjoxNzE4ODEyNDg2fQ.fTt_yEZwZT2qPioUogGbKkvPKtsdsODi4Gb3hk4aNJc
+
+{
+    "username": "dadminse",
+    "password": "1234",
+    "role": "admn"
+}
+
+### TESTING login with admin role
+POST http://localhost:3001/auth/login
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NzJmZjIyOTc2YWI1ZGUyZmI4OGVlZSIsInVzZXJuYW1lIjoidGVzdGxhdXJhIiwiaWF0IjoxNzE4ODEyNDg2fQ.fTt_yEZwZT2qPioUogGbKkvPKtsdsODi4Gb3hk4aNJc
+
+{
+    "username": "dadminse",
+    "password": "1234",
+    "role": "admn"
+}
+
+### TESTING access to admin
+GET http://localhost:3001/admin
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NzM0YjMyNjViOTY0YWI2OGQ0MGIyNCIsInVzZXJuYW1lIjoiZGFkbWlucyIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcxODgzMTk4MH0.uz6eY7tlbBgq1XIX9lqDz0AORqlAInQ6jJsCgPK14Bk
+
+{}

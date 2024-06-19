@@ -2,6 +2,7 @@ import express from 'express'
 import dotenv from 'dotenv'
 import authRoutes from './routes/auth.mjs'
 import { verifyJWT } from './middlewares/verifyJWT.mjs'
+import { verifyAdmin } from './middlewares/verifyAdmin.mjs'
 import { mongoose } from 'mongoose'
 
 const app = express()
@@ -15,6 +16,11 @@ app.use(express.json())
 
 mongoose.connect(process.env.MONGODB_URL).then(() => {
 	console.log("MongoDB is connected");
+})
+
+app.get('/admin', verifyJWT, verifyAdmin, (req, res) => {
+	const { username } = req.user;
+	res.send(`This is an Admin Route. Welcome ${username}`);
 })
 
 app.use('/auth', authRoutes);
