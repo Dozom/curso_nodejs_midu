@@ -1,0 +1,17 @@
+### SIGNUP REQUEST
+POST http://localhost:3001/auth/signup
+Content-Type: application/json
+
+{
+    "username": "dncc",
+    "password": "1234"
+}
+
+### LOGIN REQUEST
+POST http://localhost:3001/auth/login
+Content-Type: application/json
+
+{
+    "username": "dncc",
+    "password": "1234"
+}
