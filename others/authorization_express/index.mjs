@@ -21,6 +21,7 @@ app.use('/auth', authRoutes);
 
 app.get('/protected', verifyJWT, (req, res) => {
 	const { username } = req.user
+	res.json({ username: username })
 })
 
 app.get('/', (req, res) => {
